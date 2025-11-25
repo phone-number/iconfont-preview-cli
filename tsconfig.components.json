@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.app.json",
+  "include": [
+    "app/src/components/**/*.ts",
+    "app/src/components/**/*.tsx",
+    "app/src/components/**/*.vue",
+    "app/auto-imports.d.ts",
+    "app/components.d.ts"
+  ]
+}

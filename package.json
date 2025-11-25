@@ -14,8 +14,7 @@
     "build:app": "pnpm run -C app build",
     "build:other": "pnpm run -C build-other build",
     "build:server": "pnpm run -C server build",
-    "build:constants": "pnpm run -C constants build",
-    "build": "pnpm run -r --parallel build",
+    "build": "pnpm stub && pnpm run -r --parallel build",
     "stub": "pnpm run -r --parallel stub",
     "postinstall": "pnpm stub"
   },
