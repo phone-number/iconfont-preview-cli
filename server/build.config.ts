@@ -10,6 +10,7 @@ export default defineBuildConfig({
   ],
   clean: true,
   declaration: true,
+  // mkdist模式不支持cjs
   // rollup: {
   //   emitCJS: true
   // }
