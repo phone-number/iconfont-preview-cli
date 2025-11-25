@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "declaration": true,
+    "allowJs": true,
+    "checkJs": false,
+    "baseUrl": ".",
+    "strict": true,
+    "outDir": "dist",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "target": "ES2018",
+    "sourceMap": true,
+    "lib": ["ES2021"],
+    "allowSyntheticDefaultImports": true,
+    "types": []
+  },
+  "include": ["./src/**/*", "../constants"]
+}

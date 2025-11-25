@@ -1,0 +1,34 @@
+{
+  "name": "iconfont-cli",
+  "version": "1.0.0",
+  "author": "wangzl",
+  "description": "字体图标cli",
+  "files": [
+    "dist",
+    "constants"
+  ],
+  "scripts": {
+    "dev:app": "pnpm run -C app dev",
+    "dev:server": "pnpm run -C server dev --port 3000 --dir ../font-icon",
+    "dev": "pnpm run dev:server & pnpm run dev:app",
+    "build:app": "pnpm run -C app build",
+    "build:other": "pnpm run -C build-other build",
+    "build:server": "pnpm run -C server build",
+    "build:constants": "pnpm run -C constants build",
+    "build": "pnpm run -r --parallel build",
+    "stub": "pnpm run -r --parallel stub",
+    "postinstall": "pnpm stub"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bin": {
+    "iconfont-cli": "./dist/server/index.mjs"
+  },
+  "dependencies": {
+    "@iconfont-cli/constants": "workspace:^"
+  },
+  "devDependencies": {
+    "sass-embedded": "^1.93.3",
+    "unbuild": "^3.6.1"
+  }
+}

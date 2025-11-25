@@ -1,0 +1,5 @@
+packages:
+  - app # 前端
+  - server # 服务端
+  - constants # 常量
+  - build-other # 构建其它（组件库、vite插件、工具类，供三方使用）

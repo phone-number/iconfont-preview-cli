@@ -1,0 +1,26 @@
+{
+  "name": "@iconfont-cli/build-other",
+  "version": "1.0.0",
+  "private": true,
+  "description": "构建脚本，打包组件库、vite插件、工具类，供三方使用",
+  "keywords": [],
+  "license": "ISC",
+  "author": "wangzl",
+  "scripts": {
+    "build": "gulp --require @esbuild-kit/cjs-loader -f gulpfile.ts"
+  },
+  "devDependencies": {
+    "@esbuild-kit/cjs-loader": "^2.4.2",
+    "@types/gulp": "^4.0.18",
+    "gulp": "^4.0.2",
+    "rollup": "^3.2.0"
+  },
+  "dependencies": {
+    "@types/gulp-clean-css": "^4.3.4",
+    "@types/gulp-sass": "^6.0.0",
+    "@types/undertaker": "^1.2.12",
+    "gulp-autoprefixer": "^10.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-sass": "^6.0.1"
+  }
+}

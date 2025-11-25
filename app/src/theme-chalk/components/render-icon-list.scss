@@ -1,0 +1,34 @@
+.render-icon {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  cursor: pointer;
+  padding: 12px;
+  box-sizing: border-box;
+  color: #333;
+  font-size: 13px;
+
+  &:hover {
+    background-color: #f2f6fc;
+    i {
+      color: #4a87ff;
+    }
+  }
+
+  i {
+    font-size: 20px;
+  }
+
+  span {
+    white-space: nowrap;
+  }
+}
+
+.render-icon-class {
+  .highlight {
+    color: #4a87ff;
+  }
+}

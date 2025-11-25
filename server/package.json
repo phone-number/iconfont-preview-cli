@@ -1,0 +1,29 @@
+{
+  "name": "@iconfont-cli/server",
+  "version": "1.0.0",
+  "description": "字体图标cli 服务端",
+  "keywords": [],
+  "license": "MIT",
+  "author": "wangzl",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "unbuild"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "commander": "^11.0.0",
+    "css": "^3.0.0",
+    "koa": "^3.1.1",
+    "koa-router": "^14.0.0",
+    "koa-static": "^5.0.0",
+    "portfinder": "^1.0.38",
+    "tsx": "^4.20.6"
+  },
+  "devDependencies": {
+    "@types/css": "^0.0.38",
+    "@types/koa": "^3.0.1",
+    "@types/koa-router": "^7.4.9",
+    "@types/koa-static": "^4.0.4"
+  }
+}

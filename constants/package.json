@@ -1,0 +1,16 @@
+{
+  "name": "@iconfont-cli/constants",
+  "version": "1.0.0",
+  "description": "字体图标cli常量",
+  "keywords": [],
+  "author": "wangzl",
+  "license": "ISC",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "unbuild",
+    "dev": "pnpm run stub",
+    "stub": "unbuild"
+  }
+}
