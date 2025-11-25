@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "lib": ["ESNext"],
+    "types": ["node", "@types/undertaker"],
+    "skipLibCheck": true
+  },
+  "include": [
+    "server/**/*",
+    "constants/**/*",
+    "build-other/**/*",
+  ],
+  "exclude": ["**/dist"]
+}
