@@ -7,9 +7,9 @@
     "skipLibCheck": true
   },
   "include": [
-    "server/**/*",
-    "constants/**/*",
-    "build-other/**/*",
+    "server/src/**/*",
+    "constants/src/**/*",
+    "build-other/src/**/*",
   ],
   "exclude": ["**/dist"]
 }

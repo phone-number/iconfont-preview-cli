@@ -2,16 +2,12 @@ import { defineBuildConfig } from "unbuild";
 
 export default defineBuildConfig({
   entries: [
-    {
-      builder: 'mkdist',
-      input: "src",
-      outDir: "../dist/server"
-    }
+    "src/index"
   ],
+  outDir: '../dist/server',
   clean: true,
   declaration: true,
-  // mkdist模式不支持cjs
-  // rollup: {
-  //   emitCJS: true
-  // }
+  rollup: {
+    emitCJS: true
+  }
 });

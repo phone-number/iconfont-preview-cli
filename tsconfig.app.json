@@ -12,9 +12,7 @@
     }
   },
   "include": [
-    "app/src/**/*.ts",
-    "app/src/**/*.tsx",
-    "app/src/**/*.vue",
+    "app/src/**/*",
     "app/auto-imports.d.ts",
     "app/components.d.ts"
   ]

@@ -7,5 +7,4 @@ program
   .option('-d, --dir <dir>', '字体图标文件夹路径')
   .action(fontServer)
 
-
 program.parse(process.argv)

@@ -16,6 +16,8 @@
     "build:server": "pnpm run -C server build",
     "build": "pnpm stub && pnpm run -r --parallel build",
     "stub": "pnpm run -r --parallel stub",
+    "del:node_modules": "rimraf \"**/node_modules\"",
+    "del:dist": "rimraf dist",
     "postinstall": "pnpm stub"
   },
   "keywords": [],
@@ -24,10 +26,7 @@
     "iconfont-cli": "./dist/server/index.mjs"
   },
   "dependencies": {
-    "@iconfont-cli/constants": "workspace:^"
-  },
-  "devDependencies": {
-    "sass-embedded": "^1.93.3",
-    "unbuild": "^3.6.1"
+    "@iconfont-cli/constants": "workspace:^",
+    "rimraf": "^3.0.2"
   }
 }

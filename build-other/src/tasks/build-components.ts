@@ -24,7 +24,7 @@ const buildComponentsHand = async () => {
       outDir: componentsOutput,
       lib: {
         entry: componentsInput,
-        fileName: (format) => format === 'es' ? 'index.mjs' : 'index.js',
+        fileName: (format) => format === 'es' ? 'index.mjs' : 'index.cjs',
         formats: ['es', 'cjs']
       },
       rollupOptions: {
