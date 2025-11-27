@@ -20,7 +20,6 @@ export const fontServer = async (options: { port: number | string, dir: string }
   // 将前端项目设置静态文件服务
   app.use(serve(appOutput));
 
-  console.log(appOutput, '=======------', process.env.NODE_ENV)
 
   router.get('/api/iconsInfo', async context => {
     const filePaths = await readCssFilesAsync(fontDir)

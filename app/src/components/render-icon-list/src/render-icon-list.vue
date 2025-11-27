@@ -121,7 +121,6 @@ const onSearch = (val: string) => {
   });
   iconsInfo.value = data;
   activeNames.value = data.map((item) => item.filePath);
-  console.log(data);
 };
 
 defineExpose({
