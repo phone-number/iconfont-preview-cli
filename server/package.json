@@ -7,7 +7,7 @@
   "author": "wangzl",
   "type": "module",
   "scripts": {
-    "dev": "tsx src/index.ts",
+    "dev": "tsx src/index.ts --port 3000 --dir ../font-icon",
     "build": "tsup"
   },
   "peerDependencies": {

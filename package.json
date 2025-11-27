@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "dev:app": "pnpm run -C app dev",
-    "dev:server": "pnpm run -C server dev --port 3000 --dir ../font-icon",
+    "dev:server": "pnpm run -C server dev",
     "dev": "pnpm run dev:server & pnpm run dev:app",
     "preview": "npx node dist/server/index.mjs --dir font-icon ",
     "build:app": "pnpm run -C app build",

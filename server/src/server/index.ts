@@ -3,9 +3,14 @@ import serve from 'koa-static'
 import Router from 'koa-router'
 import chalk from 'chalk'
 import { resolve } from 'node:path'
-import { extractClassNames, readCssFilesAsync } from '../utils/css'
-import { findAvailablePort } from '../utils/port'
-import { appOutput } from '../utils/paths'
+import {
+  extractClassNames,
+  readCssFilesAsync,
+  findAvailablePort,
+  appOutput,
+  getLocalIPs,
+  getVersion
+} from '../utils'
 export const fontServer = async (options: { port: number | string, dir: string }) => {
   const start = Date.now()
 
@@ -38,8 +43,11 @@ export const fontServer = async (options: { port: number | string, dir: string }
   const port = await findAvailablePort(Number(options.port))
 
   app.listen(port, () => {
-    console.log(`\n  ${chalk.green.bold('iconfont-cli')}  ${chalk.gray('ready in')} ${chalk.bold(Date.now() - start)} ms \n`)
-    console.log(`  ${chalk.green('→')}  Local:   ${chalk.blue(`http://127.0.0.1:${port}`)}`)
+    console.log(`\n  ${chalk.green.bold('iconfont-cli')} ${chalk.green(getVersion())}  ${chalk.gray('ready in')} ${chalk.bold(Date.now() - start)} ms \n`)
+    console.log(`  ${chalk.green('→')}  Local:   ${chalk.cyan(`http://localhost:${port}`)}`)
+    getLocalIPs().forEach(ip => {
+      console.log(`  ${chalk.green('→')}  Network: ${chalk.cyan(`http://${ip}:${port}`)}`)
+    })
   })
 }
 
