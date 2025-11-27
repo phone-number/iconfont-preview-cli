@@ -6,7 +6,6 @@ import { resolve } from 'node:path'
 import { appOutput } from '@iconfont-cli/constants'
 import { extractClassNames, readCssFilesAsync } from '../utils/css'
 import { findAvailablePort } from '../utils/port'
-
 export const fontServer = async (options: { port: number | string, dir: string }) => {
   const start = Date.now()
 

@@ -4,8 +4,9 @@
   "author": "wangzl",
   "description": "字体图标cli",
   "files": [
-    "dist",
-    "constants"
+    "app",
+    "components",
+    "server"
   ],
   "scripts": {
     "dev:app": "pnpm run -C app dev",
@@ -20,13 +21,36 @@
     "del:dist": "rimraf dist",
     "postinstall": "pnpm stub"
   },
-  "keywords": [],
+  "keywords": [
+    "iconfont",
+    "字体图标",
+    "字体图标预览",
+    "字体图标vite插件"
+  ],
   "license": "ISC",
+  "exports": {
+     ".": {
+      "import": "./dist/server/index.mjs",
+      "require": "./dist/server/index.cjs"
+    },
+    "./components": {
+      "import": "./dist/components/index.mjs",
+      "require": "./dist/components/index.cjs"
+    },
+     "./server": {
+      "import": "./dist/server/index.mjs",
+      "require": "./dist/server/index.cjs"
+    },
+    "./*": "./dist/*"
+  },
   "bin": {
     "iconfont-cli": "./dist/server/index.mjs"
   },
   "dependencies": {
     "@iconfont-cli/constants": "workspace:^",
     "rimraf": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=20.19.0"
   }
 }

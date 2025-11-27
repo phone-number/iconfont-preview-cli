@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@iconfont-cli/constants": "workspace:^",
-    "chalk": "^4.1.2",
+    "chalk": "4.1.2",
     "commander": "^11.0.0",
     "css": "^3.0.0",
     "koa": "^3.1.1",
