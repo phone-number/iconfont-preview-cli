@@ -1,7 +1,6 @@
 import { parallel } from "gulp"
-import { run, withTaskName } from "../utils"
+import { run, withTaskName, buildOutput, componentsOutput, projRoot } from "../utils"
 import { resolve } from 'node:path'
-import { buildOutput, componentsOutput, projRoot} from '@iconfont-cli/constants'
 import { copy, remove } from 'fs-extra'
 
 const typesDir = resolve(buildOutput, 'types', 'app/src/components')

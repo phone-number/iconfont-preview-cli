@@ -3,9 +3,9 @@ import serve from 'koa-static'
 import Router from 'koa-router'
 import chalk from 'chalk'
 import { resolve } from 'node:path'
-import { appOutput } from '@iconfont-cli/constants'
 import { extractClassNames, readCssFilesAsync } from '../utils/css'
 import { findAvailablePort } from '../utils/port'
+import { appOutput } from '../utils/paths'
 export const fontServer = async (options: { port: number | string, dir: string }) => {
   const start = Date.now()
 
@@ -19,6 +19,8 @@ export const fontServer = async (options: { port: number | string, dir: string }
   app.use(serve(fontDir))
   // 将前端项目设置静态文件服务
   app.use(serve(appOutput));
+
+  console.log(appOutput, '=======------', process.env.NODE_ENV)
 
   router.get('/api/iconsInfo', async context => {
     const filePaths = await readCssFilesAsync(fontDir)

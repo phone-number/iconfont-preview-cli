@@ -5,8 +5,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import { componentsInput, componentsOutput } from '@iconfont-cli/constants'
-import { withTaskName } from '../utils'
+import { withTaskName, componentsInput, componentsOutput } from '../utils'
 import { resolve } from 'node:path'
 
 const buildComponentsHand = async () => {

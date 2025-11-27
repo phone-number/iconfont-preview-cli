@@ -1,12 +1,14 @@
 import { mkdir, rm } from 'fs/promises'
 import { series, parallel } from 'gulp'
-import { componentsOutput } from '@iconfont-cli/constants'
 import {
   withTaskName,
   buildComponents,
   buildComponentsTypes,
-  createPackageJson
+  createPackageJson,
+  componentsOutput
 } from './src'
+
+
 
 export default series(
   withTaskName('clean components output', () => rm(componentsOutput, { recursive: true, force: true })),
@@ -18,5 +20,4 @@ export default series(
     ),
     createPackageJson
   )
-
 )

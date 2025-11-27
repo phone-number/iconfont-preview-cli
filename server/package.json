@@ -8,10 +8,12 @@
   "type": "module",
   "scripts": {
     "dev": "tsx src/index.ts",
-    "build": "tsdown"
+    "build": "tsup"
+  },
+  "peerDependencies": {
+    "chalk": "4.1.2"
   },
   "dependencies": {
-    "@iconfont-cli/constants": "workspace:^",
     "chalk": "4.1.2",
     "commander": "^11.0.0",
     "css": "^3.0.0",
@@ -25,7 +27,7 @@
     "@types/koa": "^3.0.1",
     "@types/koa-router": "^7.4.9",
     "@types/koa-static": "^4.0.4",
-    "tsdown": "^0.16.7",
+    "tsup": "^8.5.1",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3"
   }

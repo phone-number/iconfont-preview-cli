@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 /** `/` */
-export const projRoot = resolve(__dirname, '..', '..')
+export const projRoot = resolve(__dirname, '..', '..', '..')
 
 /** `/dist` */
 export const buildOutput = resolve(projRoot, 'dist')

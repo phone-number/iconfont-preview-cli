@@ -1,8 +1,7 @@
 import { parallel } from "gulp";
 import { resolve } from 'node:path'
 import { readFileSync, writeFileSync } from 'fs-extra'
-import { withTaskName } from "../utils";
-import { buildOutput, projRoot } from '@iconfont-cli/constants'
+import { getWorkspacePackages, withTaskName, buildOutput, projRoot } from "../utils";
 
 const packageJsonSourcePath = resolve(projRoot, 'package.json')
 const packageJsonTargetPath = resolve(buildOutput, 'package.json')
@@ -29,7 +28,6 @@ export const processField = (
   }
 }
 
-
 const createPackageJsonHand = async () => {
   const packageJsonContent = readFileSync(packageJsonSourcePath, 'utf8')
   const packageJson = JSON.parse(packageJsonContent)
@@ -39,10 +37,25 @@ const createPackageJsonHand = async () => {
   // 处理 exports 和 bin 字段
   processField(packageJson, 'exports', value => value.replace('/dist', ''))
   processField(packageJson, 'bin', value => value.replace('/dist', ''))
+
+  // 处理dependencies依赖项和peerDependencies，将工作区间所需的依赖项全部进行声明
+  packageJson.dependencies = packageJson.dependencies || {}
+  packageJson.peerDependencies = packageJson.peerDependencies || {}
+  const workspacePackages = await getWorkspacePackages()
+  workspacePackages.forEach(pkg => {
+    const manifest = pkg.manifest
+    packageJson.dependencies = {
+      ...packageJson.dependencies,
+      ...manifest.dependencies
+    }
+    packageJson.peerDependencies = {
+      ...packageJson.peerDependencies,
+      ...manifest.peerDependencies
+    }
+  })
+
   // 处理node兼容
   processField(packageJson.engines, 'node', () => ">=18")
-
-
 
   writeFileSync(packageJsonTargetPath, JSON.stringify(packageJson, null, 2))
 }
