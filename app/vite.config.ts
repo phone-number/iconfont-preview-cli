@@ -32,12 +32,14 @@ export default defineConfig({
       imports: ['vue'],
       resolvers: [
         ElementPlusResolver()
-      ],
+      ]
     }),
     Components({
-      resolvers: [ElementPlusResolver({
-        importStyle: 'css'
-      })],
+      resolvers: [
+        ElementPlusResolver({
+          importStyle: 'css'
+        })
+      ]
     })
   ],
   server: {

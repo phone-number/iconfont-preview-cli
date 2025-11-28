@@ -17,7 +17,7 @@ const buildComponentsTypesHand = async () => {
     'npx vue-tsc -p tsconfig.components.json --declaration --emitDeclarationOnly --declarationDir dist/types'
   )
   await copy(typesDir, resolve(componentsOutput, 'types'))
-  await copy(autoImportType, resolve(componentsOutput, 'types/auto-import.d.ts'))
+  await copy(autoImportType, resolve(componentsOutput, 'types/global.d.ts'))
 
   await cleanComponentsTypes()
 }
