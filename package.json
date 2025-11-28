@@ -16,7 +16,7 @@
     "build:app": "pnpm run -C app build",
     "build:other": "pnpm run -C build-other build",
     "build:server": "pnpm run -C server build",
-    "build": "pnpm stub && pnpm run -r --parallel build",
+    "build": "pnpm run -r --parallel build",
     "del:node_modules": "rimraf \"**/node_modules\"",
     "del:dist": "rimraf dist"
   },
