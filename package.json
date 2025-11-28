@@ -46,11 +46,14 @@
     "*": {
       "components": [
         "./dist/components/types/index.d.ts"
+      ],
+      "server": [
+        "./dist/server/index.d.ts"
       ]
     }
   },
   "bin": {
-    "iconfont-cli": "./dist/server/index.mjs"
+    "iconfont-cli": "./dist/server/bin.mjs"
   },
   "devDependencies": {
     "rimraf": "^3.0.2"

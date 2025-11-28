@@ -47,12 +47,12 @@ export default defineConfig({
     proxy: {
       // 代理api请求接口
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'http://127.0.0.1:3000',
         changeOrigin: true
       },
       // 代理字体图标css
       '/dev': {
-        target: 'http://localhost:3000',
+        target: 'http://127.0.0.1:3000',
         changeOrigin: true,
         rewrite: p => p.replace('/dev', ''),
       }

@@ -6,7 +6,7 @@ import { resolve, extname } from 'node:path'
 
 /**
  * 异步读取目录下所有CSS文件，返回完整路径
- * @param {string} dirPath 要遍历的目录路径
+ * @param {string} dirPath 要遍历的目录路径（绝对路径）
  * @returns {Promise<Array>} 包含所有CSS文件路径的数组
  */
 export async function readCssFilesAsync(dirPath: string) {
@@ -43,8 +43,8 @@ export async function readCssFilesAsync(dirPath: string) {
 
 /**
  * 提取类名
- * @param cssFilePath css文件路径
- * @param basePath 基础路径
+ * @param cssFilePath css文件路径（绝对路径）
+ * @param basePath 基础路径（绝对路径）
  */
 export async function extractClassNames(cssFilePath: string, basePath: string) {
   try {
@@ -91,4 +91,20 @@ export async function extractClassNames(cssFilePath: string, basePath: string) {
   } catch (error: any) {
     console.error('提取类名时出错:', error.message)
   }
+}
+
+/**
+ * 获取图标信息
+ * @param dirPath 图标文件夹路径（绝对路径）
+ */
+export async function getCssInfo(dirPath: string) {
+  const filePaths = await readCssFilesAsync(dirPath)
+
+  const data: Array<NonNullable<Awaited<ReturnType<typeof extractClassNames>>>> = []
+  await Promise.all(filePaths.map(async filePath => {
+    const res = await extractClassNames(filePath, dirPath)
+    res && data.push(res)
+  }))
+
+  return data
 }

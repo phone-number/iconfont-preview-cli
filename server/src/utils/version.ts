@@ -1,9 +1,9 @@
 import { readFileSync } from "node:fs"
 import { resolve } from "node:path"
-import { projRoot } from "./paths"
+import { runtimeProjRoot } from "./paths"
 
 export const getVersion = () => {
-  const packageJsonContent = readFileSync(resolve(projRoot, "package.json"), 'utf8')
+  const packageJsonContent = readFileSync(resolve(runtimeProjRoot, "package.json"), 'utf8')
   const packageJson = JSON.parse(packageJsonContent)
   const { version = '' } = packageJson
   return version ? `v${version}` : version
