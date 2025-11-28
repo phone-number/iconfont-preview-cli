@@ -1,5 +1,5 @@
 import chalk from 'chalk'
-import { getCssInfo, logTitle} from '../utils'
+import { getCssInfo, logTitle } from '../utils'
 import { resolve } from 'node:path'
 import type { PluginOption } from 'vite'
 
@@ -10,7 +10,7 @@ export const iconfontServer = async (options: {
   const { urlPrefix = '/iconfont-proxy', iconDir = '' } = options
 
   logTitle()
-  console.log(`  字体图标服务中间件已启动，${chalk.cyan(options.urlPrefix)}开头的请求将被代理到字体图标服务`)
+  console.log(`  字体图标服务中间件已启动，${chalk.cyan(urlPrefix)}开头的请求将被代理到字体图标服务`)
 
   const pluginOption: PluginOption = {
     name: 'iconfont-server',
@@ -21,8 +21,8 @@ export const iconfontServer = async (options: {
         const codeServiceReg = new RegExp(`^${urlPrefix}`)
         if (req.url && codeServiceReg.test(req.url)) {
           if (req.url === `${urlPrefix}/api/iconsInfo`) {
-              const fontDir = resolve(process.cwd(), iconDir)
-            
+            const fontDir = resolve(process.cwd(), iconDir)
+
             const data = await getCssInfo(fontDir)
 
             res.setHeader('Content-Type', 'application/json')
