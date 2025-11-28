@@ -1,5 +1,5 @@
 import type RenderIconList from './render-icon-list.vue'
-import type { ExtractPropTypes } from 'vue'
+import type { Component, ExtractPropTypes } from 'vue'
 
 /** 图标相关信息 */
 export type IconInfo = {
@@ -9,6 +9,8 @@ export type IconInfo = {
   baseClassName: string;
   /** 图标的类名集合 */
   classNames: string[];
+  /** 自定义渲染图标的函数，返回一个组件 */
+  renderIcon?: (iconName: string) => Component
 }
 
 /** 前端页面时候的图标信息 （包含高亮信息）  */

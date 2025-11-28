@@ -67,16 +67,19 @@ const addCssLink = (data: IconInfo[]) => {
   const fragment = document.createDocumentFragment();
 
   data.forEach((item) => {
+    if (!item.filePath) return;
+    const href = props.cssLinkFormat(item.filePath);
+    if (document.querySelector(`link[rel='stylesheet'][href='${href}']`)) return
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = props.cssLinkFormat(item.filePath)
+    link.href = href
     fragment.appendChild(link);
   });
   head.appendChild(fragment);
 };
 
 onMounted(async () => {
-  const iconsInfo = await props.getIconsInfo?.() || [];
+  const iconsInfo = (await props.getIconsInfo?.()) || [];
   addCssLink(iconsInfo);
   initData(iconsInfo);
 });

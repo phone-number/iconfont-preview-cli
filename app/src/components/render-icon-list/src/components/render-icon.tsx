@@ -44,7 +44,11 @@ export default defineComponent({
           copyContent(`${props.iconInfo.baseClassName} ${props.iconClass}`)
         }
       >
-        <i class={[props.iconInfo.baseClassName, props.iconClass]} />
+        {props.iconInfo.renderIcon ? (
+          props.iconInfo.renderIcon(props.iconClass)
+        ) : (
+          <i class={[props.iconInfo.baseClassName, props.iconClass]} />
+        )}
         <RenderIconClass
           iconClass={props.iconClass}
           highlight-chunks={props.iconInfo.matchesMap?.get(props.iconClass)}

@@ -11,7 +11,11 @@
     </div>
     <div class="icon-page__main">
       <el-scrollbar>
-        <RenderIconList :get-icons-info="getIconsInfo" :css-link-format="cssLinkFormat" ref="RenderIconListRef">
+        <RenderIconList
+          :get-icons-info="getIconsInfo"
+          :css-link-format="cssLinkFormat"
+          ref="RenderIconListRef"
+        >
           <template #default="{ iconsInfo, renderIcon }">
             <el-collapse
               :model-value="iconsInfo?.map((iconInfo) => iconInfo.filePath)"
@@ -46,17 +50,20 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="tsx">
 import { getIconsInfoApi } from "/@/api/css";
 import { RenderIconList } from "/@/components";
-import '/@/theme-chalk/index.scss';
-import type { RenderIconListInstance } from "/@/components";
+import "/@/theme-chalk/index.scss";
+import type {
+  RenderIconListInstance,
+  RenderIconListProps
+} from "/@/components";
 
 /** 搜索关键字 */
 const keyword = ref("");
 const RenderIconListRef = ref<RenderIconListInstance>();
 
-const getIconsInfo = async () => {
+const getIconsInfo: RenderIconListProps["getIconsInfo"] = async () => {
   const res = await getIconsInfoApi();
   return res.data;
 };
@@ -66,11 +73,10 @@ const onSearch = (val: string) => {
 };
 
 const cssLinkFormat = (href: string) => {
-    /** 是否为开发环境dev */
+  /** 是否为开发环境dev */
   const isDev = import.meta.env.MODE === "development";
   return `${isDev ? "/dev" : ""}${href}`;
-}
-
+};
 </script>
 
 <style lang="scss">
@@ -122,7 +128,6 @@ const cssLinkFormat = (href: string) => {
   height: 90px;
   border-right: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
-
 }
 
 @media screen and (max-width: 1200px) {
@@ -148,5 +153,4 @@ const cssLinkFormat = (href: string) => {
     grid-template-columns: repeat(1, minmax(120px, 1fr));
   }
 }
-
 </style>
