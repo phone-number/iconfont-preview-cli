@@ -34,9 +34,10 @@ const createPackageJsonHand = async () => {
 
   // 删除 scripts 字段
   delete packageJson.scripts
-  // 处理 exports 和 bin 字段
+  // 处理 exports、bin、typesVersions 字段
   processField(packageJson, 'exports', value => value.replace('/dist', ''))
   processField(packageJson, 'bin', value => value.replace('/dist', ''))
+  processField(packageJson, 'typesVersions', value => value.replace('/dist', ''))
 
   // 处理dependencies依赖项和peerDependencies，将工作区间所需的依赖项全部进行声明
   packageJson.dependencies = packageJson.dependencies || {}

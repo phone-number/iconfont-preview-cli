@@ -10,11 +10,8 @@
     "dev": "tsx src/index.ts --port 3000 --dir ../font-icon",
     "build": "tsup"
   },
-  "peerDependencies": {
-    "chalk": "4.1.2"
-  },
   "dependencies": {
-    "chalk": "4.1.2",
+    "chalk": "^4.1.2",
     "commander": "^11.0.0",
     "css": "^3.0.0",
     "koa": "^3.1.1",

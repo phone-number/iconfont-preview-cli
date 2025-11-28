@@ -17,10 +17,8 @@
     "build:other": "pnpm run -C build-other build",
     "build:server": "pnpm run -C server build",
     "build": "pnpm stub && pnpm run -r --parallel build",
-    "stub": "pnpm run -r --parallel stub",
     "del:node_modules": "rimraf \"**/node_modules\"",
-    "del:dist": "rimraf dist",
-    "postinstall": "pnpm stub"
+    "del:dist": "rimraf dist"
   },
   "keywords": [
     "iconfont",
@@ -30,7 +28,7 @@
   ],
   "license": "ISC",
   "exports": {
-     ".": {
+    ".": {
       "import": "./dist/server/index.mjs",
       "require": "./dist/server/index.cjs"
     },
@@ -38,11 +36,18 @@
       "import": "./dist/components/index.mjs",
       "require": "./dist/components/index.cjs"
     },
-     "./server": {
+    "./server": {
       "import": "./dist/server/index.mjs",
       "require": "./dist/server/index.cjs"
     },
     "./*": "./dist/*"
+  },
+  "typesVersions": {
+    "*": {
+      "components": [
+        "./dist/components/types/index.d.ts"
+      ]
+    }
   },
   "bin": {
     "iconfont-cli": "./dist/server/index.mjs"
