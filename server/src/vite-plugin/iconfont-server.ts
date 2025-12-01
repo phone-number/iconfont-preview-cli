@@ -7,16 +7,16 @@ export const iconfontServer = async (options: {
   urlPrefix?: string,
   iconDir: string
 }) => {
-  const { urlPrefix = '/iconfont-proxy', iconDir = '' } = options
-
-  logTitle()
-  console.log(`  字体图标服务中间件已启动，${chalk.cyan(urlPrefix)}开头的请求将被代理到字体图标服务`)
-
   const pluginOption: PluginOption = {
     name: 'iconfont-server',
     enforce: 'pre',
     apply: 'serve',
     configureServer(server) {
+      const { urlPrefix = '/iconfont-proxy', iconDir = '' } = options
+
+      logTitle()
+      console.log(`  字体图标服务中间件已启动，${chalk.cyan(urlPrefix)}开头的请求将被代理到字体图标服务`)
+      
       server.middlewares.use(async (req, res, next) => {
         const codeServiceReg = new RegExp(`^${urlPrefix}`)
         if (req.url && codeServiceReg.test(req.url)) {
@@ -27,7 +27,7 @@ export const iconfontServer = async (options: {
 
             res.setHeader('Content-Type', 'application/json')
             res.end(JSON.stringify({
-              data, 
+              data,
               dir: options.iconDir || '',
               absDir: fontDir
             }))
