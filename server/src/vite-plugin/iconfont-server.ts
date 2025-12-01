@@ -26,7 +26,11 @@ export const iconfontServer = async (options: {
             const data = await getCssInfo(fontDir)
 
             res.setHeader('Content-Type', 'application/json')
-            res.end(JSON.stringify({ data }))
+            res.end(JSON.stringify({
+              data, 
+              dir: options.iconDir || '',
+              absDir: fontDir
+            }))
           } else {
             res.statusCode = 404
             res.end(req.url)

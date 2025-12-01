@@ -24,7 +24,7 @@
                 v-for="(iconInfo, index) in iconsInfo"
                 :key="index"
                 class="icon-page__row"
-                :title="iconInfo.filePath"
+                :title="dir + iconInfo.filePath"
                 :name="iconInfo.filePath"
               >
                 <ul class="icon-page__icon-list">
@@ -62,10 +62,12 @@ import type {
 /** 搜索关键字 */
 const keyword = ref("");
 const RenderIconListRef = ref<RenderIconListInstance>();
+const dir = ref('')
 
 const getIconsInfo: RenderIconListProps["getIconsInfo"] = async () => {
   const res = await getIconsInfoApi();
-  return res.data;
+  dir.value = res.data.absDir
+  return res.data.data;
 };
 
 const onSearch = (val: string) => {

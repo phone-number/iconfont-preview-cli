@@ -29,7 +29,9 @@ export const fontServer = async (options: { port: number | string, dir: string }
     const data = await getCssInfo(fontDir)
     context.type = 'application/json'
     context.body = {
-      data
+      data,
+      dir: options.dir || '',
+      absDir: fontDir
     }
   })
 
