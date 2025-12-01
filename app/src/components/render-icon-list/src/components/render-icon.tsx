@@ -13,10 +13,9 @@ export default defineComponent({
       type: String,
       required: true
     },
-    highlightChunks: {
-      type: Array as PropType<Array<[number, number]>>,
-      default: () => []
-    }
+    copyHandler: Function as PropType<
+      (iconName: string) => void | Promise<void>
+    >
   },
   setup(props) {
     /**
@@ -24,6 +23,10 @@ export default defineComponent({
      * @param content 要复制的内容
      */
     const copyContent = async (content: string) => {
+      if (props.copyHandler) {
+        props.copyHandler(content);
+        return;
+      }
       let messageType = "";
       try {
         await clipboardCopy(content);
@@ -37,15 +40,16 @@ export default defineComponent({
       } as any);
     };
 
+    const iconName = computed(() => {
+      return props.iconInfo.baseClassName
+        ? `${props.iconInfo.baseClassName} ${props.iconClass}`
+        : props.iconClass;
+    });
+
     return () => (
-      <span
-        class="render-icon"
-        onClick={() =>
-          copyContent(`${props.iconInfo.baseClassName} ${props.iconClass}`)
-        }
-      >
+      <span class="render-icon" onClick={() => copyContent(iconName.value)}>
         {props.iconInfo.renderIcon ? (
-          props.iconInfo.renderIcon(props.iconClass)
+          props.iconInfo.renderIcon(iconName.value)
         ) : (
           <i class={[props.iconInfo.baseClassName, props.iconClass]} />
         )}
