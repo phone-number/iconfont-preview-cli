@@ -26,7 +26,7 @@
     "字体图标预览",
     "字体图标vite插件"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "exports": {
     ".": {
       "import": "./dist/server/index.mjs",
