@@ -5,7 +5,8 @@ import {
   buildComponents,
   buildComponentsTypes,
   createPackageJson,
-  componentsOutput
+  componentsOutput,
+  copyPublic
 } from './src'
 
 
@@ -18,6 +19,7 @@ export default series(
       buildComponents,
       buildComponentsTypes
     ),
-    createPackageJson
+    createPackageJson,
+    copyPublic
   )
 )

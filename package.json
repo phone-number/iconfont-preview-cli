@@ -3,11 +3,6 @@
   "version": "1.0.0",
   "author": "wangzl",
   "description": "字体图标cli",
-  "files": [
-    "app",
-    "components",
-    "server"
-  ],
   "scripts": {
     "dev:app": "pnpm run -C app dev",
     "dev:server": "pnpm run -C server dev",
@@ -27,6 +22,13 @@
     "字体图标vite插件"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phone-number/iconfont-cli.git"
+  },
+  "bin": {
+    "iconfont-cli": "./dist/server/bin.mjs"
+  },
   "exports": {
     ".": {
       "import": "./dist/server/index.mjs",
@@ -51,9 +53,6 @@
         "./dist/server/index.d.ts"
       ]
     }
-  },
-  "bin": {
-    "iconfont-cli": "./dist/server/bin.mjs"
   },
   "devDependencies": {
     "rimraf": "^3.0.2"
