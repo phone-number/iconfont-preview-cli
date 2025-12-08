@@ -1,5 +1,5 @@
 {
-  "name": "@iconfont-preview/build-other",
+  "name": "@iconfont-preview-cli/build-other",
   "version": "1.0.0",
   "private": true,
   "description": "构建脚本，打包组件库、vite插件、工具类，供三方使用",

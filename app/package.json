@@ -1,5 +1,5 @@
 {
-  "name": "@iconfont-preview/app",
+  "name": "@iconfont-preview-cli/app",
   "private": true,
   "description": "字体图标cli App",
   "version": "0.0.0",

@@ -1,4 +1,4 @@
-# iconfont-preview
+# iconfont-preview-cli
 
 一个用于预览本地字体图标的命令行工具。它可以扫描指定目录下的 CSS 文件，解析出图标类名，并提供一个可视化的 Web 界面来预览、搜索和复制图标代码。
 
@@ -16,11 +16,11 @@
 
 ```bash
 # 全局安装
-npm install -g iconfont-preview
+npm install -g iconfont-preview-cli
 
 
 # 或者在项目中安装
-npm install -D iconfont-preview
+npm install -D iconfont-preview-cli
 ```
 
 ### 命令行使用 (CLI)
@@ -29,11 +29,11 @@ npm install -D iconfont-preview
 
 ```bash
 # 预览指定目录下的字体图标
-iconfont-preview --dir ./path/to/your/fonts
+iconfont-preview-cli --dir ./path/to/your/fonts
 
 
 # 指定端口 (默认 3000)
-iconfont-preview --dir ./path/to/your/fonts --port 8080
+iconfont-preview-cli --dir ./path/to/your/fonts --port 8080
 ```
 
 ### 参数说明
@@ -51,7 +51,7 @@ iconfont-preview --dir ./path/to/your/fonts --port 8080
 
 ```typescript
 // vite.config.ts
-import { iconfontServer } from "iconfont-preview/server";
+import { iconfontServer } from "iconfont-preview-cli/server";
 
 export default {
   plugins: [
@@ -70,9 +70,9 @@ export default {
 ### 引入
 
 ```typescript
-import { RenderIconList } from "iconfont-preview/components";
+import { RenderIconList } from "iconfont-preview-cli/components";
 // 引入样式
-import "iconfont-preview/components/index.css";
+import "iconfont-preview-cli/components/index.css";
 import axios from "axios";
 ```
 
@@ -119,11 +119,11 @@ import axios from "axios";
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { RenderIconList } from "iconfont-preview/components";
+import { RenderIconList } from "iconfont-preview-cli/components";
 // 引入样式
-import "iconfont-preview/components/index.css";
+import "iconfont-preview-cli/components/index.css";
 import axios from "axios";
-import type { RenderIconListInstance, IconInfo } from "iconfont-preview/components";
+import type { RenderIconListInstance, IconInfo } from "iconfont-preview-cli/components";
 
 /** 搜索关键字 */
 const keyword = ref("");
@@ -218,7 +218,7 @@ interface IconInfo {
 {
   "compilerOptions": {
      "types": [
-      "iconfont-preview/components/types/global"
+      "iconfont-preview-cli/components/types/global"
     ]
   }
 }
