@@ -1,7 +1,7 @@
 import { parallel } from "gulp";
 import { resolve } from 'node:path'
 import { readFileSync, writeFileSync } from 'fs-extra'
-import { getWorkspacePackages, withTaskName, buildOutput, projRoot } from "../utils";
+import { getWorkspacePackages, withTaskName, buildOutput, projRoot, pkgName } from "../utils";
 
 const packageJsonSourcePath = resolve(projRoot, 'package.json')
 const packageJsonTargetPath = resolve(buildOutput, 'package.json')
@@ -38,6 +38,7 @@ const createPackageJsonHand = async () => {
   processField(packageJson, 'exports', value => value.replace('/dist', ''))
   processField(packageJson, 'bin', value => value.replace('/dist', ''))
   processField(packageJson, 'typesVersions', value => value.replace('/dist', ''))
+  packageJson.name = pkgName
 
   // 处理dependencies依赖项和peerDependencies，将工作区间所需的依赖项全部进行声明
   packageJson.dependencies = packageJson.dependencies || {}

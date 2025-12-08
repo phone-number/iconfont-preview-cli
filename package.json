@@ -1,5 +1,5 @@
 {
-  "name": "iconfont-cli",
+  "name": "iconfont-preview",
   "version": "1.0.0",
   "author": "wangzl",
   "description": "字体图标cli",
@@ -7,7 +7,7 @@
     "dev:app": "pnpm run -C app dev",
     "dev:server": "pnpm run -C server dev",
     "dev": "pnpm run dev:server & pnpm run dev:app",
-    "preview": "npx node dist/server/index.mjs --dir font-icon ",
+    "preview": "node dist/server/bin.mjs --dir font-icon",
     "build:app": "pnpm run -C app build",
     "build:other": "pnpm run -C build-other build",
     "build:server": "pnpm run -C server build",
@@ -24,10 +24,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/phone-number/iconfont-cli.git"
+    "url": "https://github.com/phone-number/iconfont-preview.git"
   },
   "bin": {
-    "iconfont-cli": "./dist/server/bin.mjs"
+    "iconfont-preview": "./dist/server/bin.mjs"
   },
   "exports": {
     ".": {

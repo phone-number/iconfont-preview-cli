@@ -3,5 +3,5 @@ import { getVersion } from "./version"
 
 export const logTitle = (start?: number) => {
   const readyIn = start ? `  ${chalk.gray('ready in')} ${chalk.bold(Date.now() - start)} ms` : ''
-  console.log(`\n  ${chalk.green.bold('iconfont-cli')} ${chalk.green(getVersion())}${readyIn} \n`)
+  console.log(`\n  ${chalk.green.bold('iconfont-preview')} ${chalk.green(getVersion())}${readyIn} \n`)
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@iconfont-cli/server",
+  "name": "@iconfont-preview/server",
   "version": "1.0.0",
   "description": "字体图标cli 服务端",
   "keywords": [],
