@@ -1,5 +1,9 @@
 import RenderIconClass from "./render-icon-class";
 import clipboardCopy from "clipboard-copy";
+import { defineComponent,computed } from "vue";
+import { ElMessage } from "element-plus";
+
+import type { PropType,  } from "vue";
 import type { InnerIconInfo } from "../render-icon-list";
 
 export default defineComponent({

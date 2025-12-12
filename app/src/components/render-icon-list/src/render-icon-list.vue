@@ -8,6 +8,7 @@
 import Fuse from "fuse.js";
 import RenderIcon from "./components/render-icon";
 import { renderIconListProps } from "./render-icon-list";
+import { ref, onMounted } from "vue";
 import type { IconInfo, InnerIconInfo } from "./render-icon-list";
 
 const props = defineProps(renderIconListProps);
@@ -69,10 +70,11 @@ const addCssLink = (data: IconInfo[]) => {
   data.forEach((item) => {
     if (!item.filePath) return;
     const href = props.cssLinkFormat(item.filePath);
-    if (document.querySelector(`link[rel='stylesheet'][href='${href}']`)) return
+    if (document.querySelector(`link[rel='stylesheet'][href='${href}']`))
+      return;
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = href
+    link.href = href;
     fragment.appendChild(link);
   });
   head.appendChild(fragment);

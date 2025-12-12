@@ -34,6 +34,8 @@ const createPackageJsonHand = async () => {
 
   // 删除 scripts 字段
   delete packageJson.scripts
+  // 删除 pnpm 字段 escape-string-regexp版本锁定，内部打包组件时需要锁定，否则报错
+  delete packageJson.pnpm
   // 处理 exports、bin、typesVersions 字段
   processField(packageJson, 'exports', value => value.replace('/dist', ''))
   processField(packageJson, 'bin', value => value.replace('/dist', ''))

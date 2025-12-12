@@ -2,12 +2,9 @@ import { series } from 'gulp'
 import { build } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { withTaskName, componentsInput, componentsOutput } from '../utils'
 import { resolve } from 'node:path'
-
+import ElementPlus from 'unplugin-element-plus/vite'
 const buildComponentsHand = async () => {
   await build({
     resolve: {
@@ -28,7 +25,7 @@ const buildComponentsHand = async () => {
       },
       rollupOptions: {
         // 确保 Vue 被作为外部依赖（不打包进库）
-        external: ['vue'],
+        external: ['vue', 'element-plus'],
         output: {
           // 将 SCSS 也打包为独立文件
           assetFileNames: (assetInfo) => {
@@ -40,19 +37,7 @@ const buildComponentsHand = async () => {
     plugins: [
       vue(),
       vueJsx(),
-      AutoImport({
-        imports: ['vue'],
-        resolvers: [
-          ElementPlusResolver()
-        ],
-      }),
-      Components({
-        resolvers: [
-          ElementPlusResolver({
-            importStyle: 'css'
-          })
-        ],
-      })
+      ElementPlus({}),
     ],
   })
 }

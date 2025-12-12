@@ -57,6 +57,11 @@
   "devDependencies": {
     "rimraf": "^3.0.2"
   },
+  "pnpm": {
+    "overrides": {
+      "escape-string-regexp": "4.0.0"
+    }
+  },
   "engines": {
     "node": ">=18"
   }

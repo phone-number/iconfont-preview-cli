@@ -12,8 +12,6 @@
     }
   },
   "include": [
-    "app/src/**/*",
-    "app/auto-imports.d.ts",
-    "app/components.d.ts"
+    "app/src/**/*"
   ]
 }

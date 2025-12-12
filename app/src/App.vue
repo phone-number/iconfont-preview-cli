@@ -53,6 +53,8 @@
 <script setup lang="tsx">
 import { getIconsInfoApi } from "/@/api/css";
 import { RenderIconList } from "/@/components";
+import { ref } from "vue";
+import { ElInput, ElScrollbar, ElCollapse, ElCollapseItem } from "element-plus";
 import "/@/theme-chalk/index.scss";
 import type {
   RenderIconListInstance,
@@ -62,11 +64,11 @@ import type {
 /** 搜索关键字 */
 const keyword = ref("");
 const RenderIconListRef = ref<RenderIconListInstance>();
-const dir = ref('')
+const dir = ref("");
 
 const getIconsInfo: RenderIconListProps["getIconsInfo"] = async () => {
   const res = await getIconsInfoApi();
-  dir.value = res.data.absDir
+  dir.value = res.data.absDir;
   return res.data.data;
 };
 

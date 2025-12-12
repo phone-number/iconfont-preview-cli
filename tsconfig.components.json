@@ -1,8 +1,6 @@
 {
   "extends": "./tsconfig.app.json",
   "include": [
-    "app/src/components/**/*",
-    "app/auto-imports.d.ts",
-    "app/components.d.ts"
+    "app/src/components/**/*"
   ]
 }

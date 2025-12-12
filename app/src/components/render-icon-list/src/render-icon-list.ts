@@ -1,5 +1,5 @@
 import type RenderIconList from './render-icon-list.vue'
-import type { Component, ExtractPropTypes } from 'vue'
+import type { Component, ExtractPropTypes, PropType } from 'vue'
 
 /** 图标相关信息 */
 export type IconInfo = {

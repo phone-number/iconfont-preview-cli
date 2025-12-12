@@ -211,19 +211,6 @@ interface IconInfo {
 }
 ```
 
-### ts 类型支持
-
-```ts
-// tsconfig.json
-{
-  "compilerOptions": {
-     "types": [
-      "iconfont-preview-cli/components/types/global"
-    ]
-  }
-}
-```
-
 ## 🛠 本地开发
 
 本项目采用 Monorepo 结构，使用 pnpm workspace 管理。

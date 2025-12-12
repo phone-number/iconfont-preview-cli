@@ -1,3 +1,6 @@
+import { defineComponent } from "vue";
+import type { PropType, Component } from "vue";
+
 export default defineComponent({
   name: "RenderIconClass",
   props: {
