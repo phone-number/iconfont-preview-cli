@@ -1,10 +1,11 @@
 import RenderIconClass from "./render-icon-class";
 import clipboardCopy from "clipboard-copy";
-import { defineComponent,computed } from "vue";
-import { ElMessage } from "element-plus";
+import { defineComponent, computed } from "vue";
+import toast from "./use-toast";
 
-import type { PropType,  } from "vue";
+import type { PropType } from "vue";
 import type { InnerIconInfo } from "../render-icon-list";
+
 
 export default defineComponent({
   name: "RenderIcon",
@@ -38,10 +39,8 @@ export default defineComponent({
       } catch {
         messageType = "error";
       }
-      ElMessage({
-        message: `copy ${messageType} [${content}]`,
-        type: messageType
-      } as any);
+      const message = `copy ${messageType} [${content}]`
+      messageType === 'success' ? toast.success(message) : toast.error(message)
     };
 
     const iconName = computed(() => {
