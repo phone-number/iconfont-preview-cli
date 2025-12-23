@@ -4,7 +4,6 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { withTaskName, componentsInput, componentsOutput } from '../utils'
 import { resolve } from 'node:path'
-import ElementPlus from 'unplugin-element-plus/vite'
 const buildComponentsHand = async () => {
   await build({
     resolve: {
@@ -25,7 +24,7 @@ const buildComponentsHand = async () => {
       },
       rollupOptions: {
         // 确保 Vue 被作为外部依赖（不打包进库）
-        external: ['vue', 'element-plus'],
+        external: ['vue'],
         output: {
           // 将 SCSS 也打包为独立文件
           assetFileNames: (assetInfo) => {
@@ -36,8 +35,7 @@ const buildComponentsHand = async () => {
     },
     plugins: [
       vue(),
-      vueJsx(),
-      ElementPlus({}),
+      vueJsx()
     ],
   })
 }
