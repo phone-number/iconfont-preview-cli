@@ -17,6 +17,11 @@
   },
   "keywords": [
     "iconfont",
+    "font-icon",
+    "icon-preview",
+    "cli",
+    "vite-plugin",
+    "vue3",
     "字体图标",
     "字体图标预览",
     "字体图标vite插件"
