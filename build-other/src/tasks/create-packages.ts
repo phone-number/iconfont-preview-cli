@@ -45,15 +45,18 @@ const createPackageJsonHand = async () => {
   packageJson.dependencies = packageJson.dependencies || {}
   packageJson.peerDependencies = packageJson.peerDependencies || {}
   const workspacePackages = await getWorkspacePackages()
+  const hasDependencies = ['@iconfont-preview-cli/server']
   workspacePackages.forEach(pkg => {
     const manifest = pkg.manifest
-    packageJson.dependencies = {
-      ...packageJson.dependencies,
-      ...manifest.dependencies
-    }
-    packageJson.peerDependencies = {
-      ...packageJson.peerDependencies,
-      ...manifest.peerDependencies
+    if (hasDependencies.includes(manifest.name!)) {
+      packageJson.dependencies = {
+        ...packageJson.dependencies,
+        ...manifest.dependencies
+      }
+      packageJson.peerDependencies = {
+        ...packageJson.peerDependencies,
+        ...manifest.peerDependencies
+      }
     }
   })
 
