@@ -6,8 +6,8 @@
   "keywords": [],
   "license": "ISC",
   "author": "wangzl",
-  "type": "module"
-,  "scripts": {
+  "type": "module",
+  "scripts": {
     "build": "gulp --require @esbuild-kit/cjs-loader -f gulpfile.ts"
   },
   "devDependencies": {

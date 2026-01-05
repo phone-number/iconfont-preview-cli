@@ -1,53 +1,55 @@
 # iconfont-preview-cli
 
-一个用于预览本地字体图标的命令行工具。它可以扫描指定目录下的 CSS 文件，解析出图标类名，并提供一个可视化的 Web 界面来预览、搜索和复制图标代码。
+[中文文档](./README_zh.md) | [English](./README.md)
 
-## ✨ 功能特性
+A command-line tool for previewing local font icons. It scans CSS files in a specified directory, extracts icon class names, and provides a web interface to preview, search, and copy icon codes.
 
-- 🔍 **自动扫描**: 递归扫描指定目录下的所有 CSS 文件。
-- 🎨 **可视化预览**: 解析 CSS 中的 `content` 属性，展示图标及其类名。
-- 📋 **一键复制**: 点击图标即可复制类名到剪贴板。
-- ⚡ **即时搜索**: 支持通过类名关键词快速筛选图标。
-- 🛠 **Vite 插件集成**: 提供 Vite 插件，方便在开发环境中直接集成图标预览服务。
+## Features
 
-## 🚀 快速开始
+- **Auto Scan**: Recursively scans all CSS files in the specified directory.
+- **Visual Preview**: Parses `content` properties in CSS to display icons and their class names.
+- **One-Click Copy**: Click any icon to copy its class name to the clipboard.
+- **Instant Search**: Quickly filter icons by class name keywords.
+- **Vite Integration**: Includes a Vite plugin to integrate icon preview into the development environment.
 
-### 安装
+## Quick Start
+
+### Installation
 
 ```bash
-# 全局安装
+# Global installation
 npm install -g iconfont-preview-cli
 
 
-# 或者在项目中安装
+# Or install as a dev dependency
 npm install -D iconfont-preview-cli
 ```
 
-### 命令行使用 (CLI)
+### CLI Usage
 
-在项目根目录下，你可以通过以下命令启动预览服务：
+Run the preview server from your project root:
 
 ```bash
-# 预览指定目录下的字体图标
+# Preview font icons in a specific directory
 iconfont-preview-cli --dir ./path/to/your/fonts
 
 
-# 指定端口 (默认 3000)
+# Specify a custom port (default: 3000)
 iconfont-preview-cli --dir ./path/to/your/fonts --port 8080
 ```
 
-### 参数说明
+### Options
 
-| 参数     | 简写 | 描述                                         | 默认值 |
-| -------- | ---- | -------------------------------------------- | ------ |
-| `--dir`  | `-d` | **(必填)** 包含字体图标 CSS 文件的文件夹路径 | -      |
-| `--port` | `-p` | 服务启动端口                                 | `3000` |
+| Option   | Alias | Description                                      | Default |
+| -------- | ----- | ------------------------------------------------ | ------- |
+| `--dir`  | `-d`  | **(Required)** Path to the folder containing CSS | -       |
+| `--port` | `-p`  | Server port                                      | `3000`  |
 
-## 📦 安装与集成
+## Installation & Integration
 
-### 作为 Vite 插件使用
+### Using as a Vite Plugin
 
-如果你正在开发一个 Vite 项目，可以将此工具作为插件集成，在开发服务器中同时提供图标预览功能。
+For Vite projects, use the plugin to enable icon preview with the dev server.
 
 ```typescript
 // vite.config.ts
@@ -56,27 +58,27 @@ import { iconfontServer } from "iconfont-preview-cli/server";
 export default {
   plugins: [
     iconfontServer({
-      iconDir: "./src/assets/fonts", // 字体图标存放目录
-      urlPrefix: "/iconfont-proxy" // 代理路径前缀 (可选)
+      iconDir: "./src/assets/fonts", // Directory containing font icons
+      urlPrefix: "/iconfont-proxy" // Proxy path prefix (optional)
     })
   ]
 };
 ```
 
-### 组件
+### Components
 
-除了 CLI 工具，本项目还导出了核心组件 `RenderIconList`，方便你在自己的 Vue 项目中定制图标预览页面。
+The project also exports the `RenderIconList` component for custom Vue integrations.
 
-### 引入
+### Import
 
 ```typescript
 import { RenderIconList } from "iconfont-preview-cli/components";
-// 引入样式
+// Import styles
 import "iconfont-preview-cli/components/index.css";
 import axios from "axios";
 ```
 
-### 基本用法
+### Basic Usage
 
 ```vue
 <template>
@@ -84,7 +86,7 @@ import axios from "axios";
     <div class="local-icon-demo__header">
       <el-input
         v-model="keyword"
-        placeholder="输入关键字，回车搜索"
+        placeholder="Enter keyword to search"
         clearable
         @change="onSearch"
       />
@@ -103,7 +105,7 @@ import axios from "axios";
               :key="className"
               class="local-icon-demo__icon-li"
             >
-              <!-- 使用 renderIcon 组件渲染图标 -->
+              <!-- Render icon using the renderIcon component -->
               <component
                 :is="renderIcon"
                 :icon-class="className"
@@ -120,30 +122,33 @@ import axios from "axios";
 <script setup lang="ts">
 import { ref } from "vue";
 import { RenderIconList } from "iconfont-preview-cli/components";
-// 引入样式
+// Import styles
 import "iconfont-preview-cli/components/index.css";
 import axios from "axios";
-import type { RenderIconListInstance, IconInfo } from "iconfont-preview-cli/components";
+import type {
+  RenderIconListInstance,
+  IconInfo
+} from "iconfont-preview-cli/components";
 
-/** 搜索关键字 */
+/** Search keyword */
 const keyword = ref("");
 const renderIconListRef = ref<RenderIconListInstance>();
 
-// 获取图标数据的函数
+// Function to fetch icon data
 const getIconsInfo = async (): Promise<IconInfo[]> => {
-  // 这里请求接口前缀替换为vite插件iconfontServer中urlPrefix的值
+  // Replace the request prefix with the urlPrefix defined in the Vite plugin
   const res = await axios.get("/iconfont-proxy/api/iconsInfo");
   const iconsInfo = res.data.data;
   return iconsInfo;
 };
 
-// 动态加载字体样式
+// Dynamically load font styles
 const cssLinkFormat = (href: string) => {
-  // 这里根据需求替换为字体样式的路径
+  // Adjust the path to your font styles as needed
   return href && `/@/assets/font-icon${href}`;
 };
 
-// 调用搜索
+// Trigger search
 const onSearch = (query: string) => {
   renderIconListRef.value?.onSearch(query);
 };
@@ -161,8 +166,6 @@ const onSearch = (query: string) => {
 }
 .local-icon-demo__icon-li {
   height: 120px;
-  border-right: 1px solid getCssVar(border-color);
-  border-bottom: 1px solid getCssVar(border-color);
 }
 </style>
 ```
@@ -171,76 +174,76 @@ const onSearch = (query: string) => {
 
 #### Props
 
-| 属性名          | 类型                                      | 必填 | 描述                                              |
-| --------------- | ----------------------------------------- | ---- | ------------------------------------------------- |
-| `getIconsInfo`  | `() => Promise<IconInfo[]> \| IconInfo[]` | 是   | 获取图标信息的函数，返回图标数据数组。            |
-| `cssLinkFormat` | `(href: string) => string`                | 否   | 格式化 CSS 文件链接的函数，用于动态加载字体样式。 |
+| Prop Name       | Type                                      | Required | Description                                                                  |
+| --------------- | ----------------------------------------- | -------- | ---------------------------------------------------------------------------- |
+| `getIconsInfo`  | `() => Promise<IconInfo[]> \| IconInfo[]` | Yes      | Function to retrieve icon data. Returns an array of icon info.               |
+| `cssLinkFormat` | `(href: string) => string`                | No       | Function to format CSS file links, used for dynamically loading font styles. |
 
 #### Methods (Exposed)
 
-| 方法名     | 参数              | 描述                                  |
-| ---------- | ----------------- | ------------------------------------- |
-| `onSearch` | `(query: string)` | 执行模糊搜索，过滤 `iconsInfo` 数据。 |
+| Method Name | Parameters        | Description                                    |
+| ----------- | ----------------- | ---------------------------------------------- |
+| `onSearch`  | `(query: string)` | Performs a fuzzy search to filter `iconsInfo`. |
 
 #### Slots
 
-| 插槽名    | 参数                                                    | 描述                                                            |
-| --------- | ------------------------------------------------------- | --------------------------------------------------------------- |
-| `default` | `{ iconsInfo: InnerIconInfo[], renderIcon: Component }` | 自定义渲染列表内容。`renderIcon` 是一个用于渲染单个图标的组件。 |
+| Slot Name | Parameters                                              | Description                                                                           |
+| --------- | ------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `default` | `{ iconsInfo: InnerIconInfo[], renderIcon: Component }` | Customizes the list content. `renderIcon` is a component for rendering a single icon. |
 
 ### renderIcon API
 
 #### Props
 
-| 属性名        | 类型                                          | 必填 | 描述               |
-| ------------- | --------------------------------------------- | ---- | ------------------ |
-| `copyHandler` | `(iconName: string) => void \| Promise<void>` | 否   | 自定义图标点击复制 |
+| Prop Name     | Type                                          | Required | Description                                |
+| ------------- | --------------------------------------------- | -------- | ------------------------------------------ |
+| `copyHandler` | `(iconName: string) => void \| Promise<void>` | No       | Custom handler for icon click/copy action. |
 
 #### Type Definitions
 
 ```typescript
 interface IconInfo {
-  /** CSS 文件相对路径 */
+  /** Relative path to the CSS file */
   filePath: string;
-  /** 基础类名 (如 iconfont) */
+  /** Base class name (e.g., iconfont) */
   baseClassName: string;
-  /** 图标类名列表 */
+  /** List of icon class names */
   classNames: string[];
-  /** 自定义渲染图标的函数，返回一个组件 */
+  /** Custom render function returning a component */
   renderIcon?: (iconName: string) => Component;
 }
 ```
 
-## 🛠 本地开发
+## Local Development
 
-本项目采用 Monorepo 结构，使用 pnpm workspace 管理。
+This project is a Monorepo managed by pnpm workspaces.
 
-### 目录结构
+### Directory Structure
 
-- **`app/`**: 前端预览应用 (Vue 3 + Element Plus)
-- **`server/`**: 服务端核心逻辑、CLI 实现及 Vite 插件 (Koa + Commander)
-- **`font-icon/`**: 示例字体图标文件
+- **`app/`**: Frontend preview application (Vue 3 + Element Plus)
+- **`server/`**: Server-side core logic, CLI implementation, and Vite plugin (Koa + Commander)
+- **`font-icon/`**: Example font icon files
 
-### 开发命令
+### Development Commands
 
-1. **安装依赖**
+1. **Install Dependencies**
 
    ```bash
    pnpm install
    ```
 
-2. **启动开发环境**
+2. **Start Development Environment**
 
-   同时启动服务端和前端应用的开发模式：
+   Starts both the server and the frontend application in development mode:
 
    ```bash
    pnpm dev
    ```
 
-   - Server 运行在 `http://localhost:3000` (默认)
-   - App 运行在 Vite 开发服务器端口
+   - Server runs at `http://localhost:3000` (default)
+   - App runs on the Vite dev server port
 
-3. **构建项目**
+3. **Build Project**
 
    ```bash
    pnpm build
@@ -248,7 +251,7 @@ interface IconInfo {
 
 ### FAQ
 
-1. 报错：Error: Cannot find module '@rolldown/binding-darwin-universal'
+1. Error: Cannot find module '@rolldown/binding-darwin-universal'
 
 ```shell
 pnpm i -f
